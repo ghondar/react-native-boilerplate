@@ -1,0 +1,28 @@
+{
+  "presets": ["module:metro-react-native-babel-preset"],
+  "env": {
+    "production": {
+      "plugins": ["react-native-paper/babel"]
+    }
+  },
+  "plugins": [
+    "@babel/transform-react-jsx-source",
+    [
+      "module-resolver",
+      {
+        "root": ["./src"],
+        "extensions": [".js", ".ios.js", ".android.js"],
+        "alias": {
+          "utils": "./src/utils",
+          "lib": "./src/lib",
+          "reducers": "./src/reducers",
+          "sagas": "./src/sagas",
+          "components": "./src/components",
+          "containers": "./src/containers",
+          "store": "./src/store",
+          "routes": "./src/routes"
+        }
+      }
+    ]
+  ]
+}
