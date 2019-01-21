@@ -35,9 +35,9 @@ class Header extends Component {
 
     return (
       <Drawer
-        customStyles={{ drawer: { elevation: 5 } }} drawerContent={menu} moveCapture
-        ref={this.drawer} type={Drawer.types.Overlay}>
-        <StatusBar backgroundColor={'rgba(52, 52, 52, 0.6)'} translucent={true} />
+        customStyles={{ drawer: { elevation: 5 } }} drawerContent={menu} ref={this.drawer}
+        type={Drawer.types.Overlay}>
+        <StatusBar backgroundColor={'rgba(0, 0, 0, 0.5)'} translucent />
         <Appbar.Header style={{ marginTop: 24 }}>
           {more ? <Appbar.Action icon='menu' onPress={this._handleToggle} /> : <Appbar.BackAction onPress={() => goBack()} />}
           <Appbar.Content subtitle={subTitle} title={title} />

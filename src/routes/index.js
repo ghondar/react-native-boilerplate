@@ -1,9 +1,10 @@
 import React, { Component } from 'react'
-import { NativeRouter, Route, Switch } from 'react-router-native'
+import { NativeRouter, Route, Switch, Redirect } from 'react-router-native'
 
 import Header from 'containers/header'
 
 import Home from 'containers/home'
+import Detail from 'containers/detail'
 import Dashboard from 'containers/dashboard'
 
 class App extends Component {
@@ -13,7 +14,11 @@ class App extends Component {
         <Switch>
           <Header>
             <Switch>
-              <Route component={Home} exact path='/' />
+              <Redirect
+                exact path='/' strict
+                to='/home' />
+              <Route component={Home} exact path='/home' />
+              <Route component={Detail} exact path='/home/detail' />
               <Route component={Dashboard} exact path='/dashboard' />
             </Switch>
           </Header>
