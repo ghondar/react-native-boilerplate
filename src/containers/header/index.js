@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { StatusBar } from 'react-native'
+import { StatusBar, Platform } from 'react-native'
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router-native'
 import { Appbar } from 'react-native-paper'
@@ -30,15 +30,18 @@ class Header extends Component {
       routes
     } = this.props
     const { title, subTitle, more, search } = routes[pathname]
+    const isAndroid = Platform.OS === 'android'
 
     const menu = <Menu onItemSelected={this._handleMenuItemSelected} />
 
     return (
       <Drawer
-        customStyles={{ drawer: { elevation: 5 } }} drawerContent={menu} ref={this.drawer}
-        type={Drawer.types.Overlay}>
+        customStyles={{ drawer: { elevation: 5 } }}
+        drawerContent={menu}
+        ref={this.drawer}
+        type={isAndroid ? Drawer.types.Overlay : Drawer.types.Default}>
         <StatusBar backgroundColor={'rgba(0, 0, 0, 0.5)'} translucent />
-        <Appbar.Header style={{ marginTop: 24 }}>
+        <Appbar.Header style={{ marginTop: isAndroid ? 24 : 0 }}>
           {more ? <Appbar.Action icon='menu' onPress={this._handleToggle} /> : <Appbar.BackAction onPress={() => goBack()} />}
           <Appbar.Content subtitle={subTitle} title={title} />
           {search && <Appbar.Action icon='search' />}
