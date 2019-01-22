@@ -41,7 +41,7 @@ class Header extends Component {
         ref={this.drawer}
         type={isAndroid ? Drawer.types.Overlay : Drawer.types.Default}>
         <StatusBar backgroundColor={'rgba(0, 0, 0, 0.5)'} translucent />
-        <Appbar.Header style={{ marginTop: isAndroid ? 24 : 0 }}>
+        <Appbar.Header style={{ marginTop: isAndroid && Platform.Version > 24  ? 24 : 0 }}>
           {more ? <Appbar.Action icon='menu' onPress={this._handleToggle} /> : <Appbar.BackAction onPress={() => goBack()} />}
           <Appbar.Content subtitle={subTitle} title={title} />
           {search && <Appbar.Action icon='search' />}
